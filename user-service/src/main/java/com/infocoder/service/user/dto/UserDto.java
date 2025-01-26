@@ -1,12 +1,9 @@
 package com.infocoder.service.user.dto;
 
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;
 import lombok.Data;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -17,12 +14,10 @@ public class UserDto {
     private String fullName;
 
     @NotBlank(message = "Username is mandatory")
-    @Column(unique = true)
     private String username;
 
     @NotBlank(message = "Email is mandatory")
     @Email(message = "Email should be valid")
-    @Column(unique = true)
     private String email;
 
     @NotBlank(message = "Password is mandatory")
