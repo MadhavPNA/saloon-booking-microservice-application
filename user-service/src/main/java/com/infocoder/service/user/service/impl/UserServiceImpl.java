@@ -50,7 +50,9 @@ public class UserServiceImpl implements IUserService {
                         UserDto.builder()
                                 .id(user.getId())
                                 .fullName(user.getFullName())
+                                .username(user.getUsername())
                                 .email(user.getEmail())
+                                .password(user.getPassword())
                                 .role(user.getRole())
                                 .phone(user.getPhone())
                                 .createdAt(user.getCreatedAt())
@@ -67,7 +69,9 @@ public class UserServiceImpl implements IUserService {
                 .orElseThrow(() -> new UserNotFoundException("User not found with this id: " + id));
 
         user.setFullName(userDto.getFullName());
+        user.setUsername(userDto.getUsername());
         user.setEmail(userDto.getEmail());
+        user.setPassword(userDto.getPassword());
         user.setRole(userDto.getRole());
         user.setPhone(userDto.getPhone());
         user.setUpdatedAt(userDto.getUpdatedAt());

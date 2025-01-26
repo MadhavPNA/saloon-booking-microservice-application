@@ -2,6 +2,7 @@ package com.infocoder.service.user.controller;
 
 import com.infocoder.service.user.dto.UserDto;
 import com.infocoder.service.user.service.IUserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,12 +28,12 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto) {
+    public ResponseEntity<UserDto> createUser(@RequestBody @Valid UserDto userDto) {
         return new ResponseEntity<>(userService.createUser(userDto), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserDto> updateUserById(@RequestBody UserDto userDto, @PathVariable Long id) {
+    public ResponseEntity<UserDto> updateUserById(@RequestBody @Valid UserDto userDto, @PathVariable Long id) {
         return new ResponseEntity<>(userService.updateUser(userDto, id), HttpStatus.OK);
     }
 
